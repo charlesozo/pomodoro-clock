@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import TimerController from './containers/TimerController/TimerController';
+import TimerContainer from './containers/TimerContainer/TimerContainer';
+import LengthContainer from './containers/LengthContainer/LengthContainer';
+import BeepAudio from './containers/BeepAudio/BeepAudio';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className={`App ${this.props.paused ? 'pause' : 'play'}`}>
+        <TimerController />
+        <BeepAudio />
+        <LengthContainer title="Session" />
+        <TimerContainer />
+        <LengthContainer title="Break" />
+      </div>
+    );
+  }
 }
+
+const mapStateToProps = (state) => ({
+  paused: state.paused,
+});
+
+App = connect(
+  mapStateToProps,
+  null,
+)(App);
 
 export default App;
