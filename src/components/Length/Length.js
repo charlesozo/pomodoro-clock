@@ -1,10 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './Length.css';
+import React from "react";
+import PropTypes from "prop-types";
+import "./Length.css";
 
 const Length = ({ title, value, id, increment, decrement }) => {
   return (
     <section className="length">
+      <p className="owner">
+        <cite>...designed and developed by charles.c</cite>
+      </p>
       <header id={`${id}-label`}>{`${title} Length`}</header>
 
       <div className="length-actions">

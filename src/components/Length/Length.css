@@ -23,3 +23,7 @@
   width: 24px;
   height: 24px;
 }
+.owner{
+  color: red;
+  display: block;
+}
